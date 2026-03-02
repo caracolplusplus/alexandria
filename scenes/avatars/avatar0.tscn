@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://cu82n8cosbnmq"]
+
+[ext_resource type="PackedScene" uid="uid://d3xlhnvgcmdpe" path="res://models/avatars/avatar0.glb" id="1_g8pdh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kvd1q"]
+animation = &"Air"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n4k2n"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hcdbh"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uxnre"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_gxyj8"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g8pdh"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ywyu"]
+animation = &"Crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f00my"]
+animation = &"Crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_prf54"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ymcj4"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mn24d"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_srvpo"]
+animation = &"Sneak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdcl6"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ta58"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7yqkx"]
+animation = &"Sneak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hw326"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tmdj7"]
+animation = &"Sprint"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_g8pdh"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_g8pdh")
+blend_point_0/pos = Vector2(0, 2)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6ywyu")
+blend_point_1/pos = Vector2(0, 1.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ymcj4")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_mn24d")
+blend_point_3/pos = Vector2(3, 1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_srvpo")
+blend_point_4/pos = Vector2(3, 1.5)
+blend_point_5/node = SubResource("AnimationNodeAnimation_vdcl6")
+blend_point_5/pos = Vector2(3, 2)
+blend_point_6/node = SubResource("AnimationNodeAnimation_2ta58")
+blend_point_6/pos = Vector2(5, 2)
+blend_point_7/node = SubResource("AnimationNodeAnimation_7yqkx")
+blend_point_7/pos = Vector2(5, 1.5)
+blend_point_8/node = SubResource("AnimationNodeAnimation_hw326")
+blend_point_8/pos = Vector2(5, 1)
+blend_point_9/node = SubResource("AnimationNodeAnimation_tmdj7")
+blend_point_9/pos = Vector2(8, 2)
+blend_point_10/node = SubResource("AnimationNodeAnimation_f00my")
+blend_point_10/pos = Vector2(8, 1.5)
+blend_point_11/node = SubResource("AnimationNodeAnimation_prf54")
+blend_point_11/pos = Vector2(8, 1)
+min_space = Vector2(0, 0)
+max_space = Vector2(8, 2)
+snap = Vector2(1, 0.5)
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3uart"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_uxnre"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gxyj8"]
+animation = &"Turn"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_yub2l"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4fq2k"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_g8pdh"]
+graph_offset = Vector2(-380.8313, 85.22387)
+nodes/output/position = Vector2(640, 133.33333)
+nodes/Locomotion/node = SubResource("AnimationNodeBlendSpace2D_g8pdh")
+nodes/Locomotion/position = Vector2(-880, 53.333332)
+nodes/Special/node = SubResource("AnimationNodeBlend2_uxnre")
+nodes/Special/position = Vector2(53.333332, 133.33333)
+nodes/Mantle/node = SubResource("AnimationNodeBlend2_3uart")
+nodes/Mantle/position = Vector2(213.33333, 133.33333)
+nodes/WallJump/node = SubResource("AnimationNodeBlend2_4fq2k")
+nodes/WallJump/position = Vector2(-106.666664, 133.33333)
+nodes/Jump/node = SubResource("AnimationNodeBlend2_gxyj8")
+nodes/Jump/position = Vector2(-266.66666, 133.33333)
+nodes/A0/node = SubResource("AnimationNodeAnimation_kvd1q")
+nodes/A0/position = Vector2(-480, 453.33334)
+nodes/A1/node = SubResource("AnimationNodeAnimation_n4k2n")
+nodes/A1/position = Vector2(-320, 453.33334)
+nodes/A2/node = SubResource("AnimationNodeAnimation_hcdbh")
+nodes/A2/position = Vector2(-160, 453.33334)
+nodes/A3/node = SubResource("AnimationNodeAnimation_uxnre")
+nodes/A3/position = Vector2(0, 453.33334)
+nodes/Turn/node = SubResource("AnimationNodeBlend2_yub2l")
+nodes/Turn/position = Vector2(-426.66666, 133.33333)
+nodes/T/node = SubResource("AnimationNodeAnimation_gxyj8")
+nodes/T/position = Vector2(-640, 453.33334)
+node_connections = [&"output", 0, &"Mantle", &"Special", 0, &"WallJump", &"Special", 1, &"A2", &"Mantle", 0, &"Special", &"Mantle", 1, &"A3", &"WallJump", 0, &"Jump", &"WallJump", 1, &"A1", &"Jump", 0, &"Turn", &"Jump", 1, &"A0", &"Turn", 0, &"Locomotion", &"Turn", 1, &"T"]
+
+[node name="Avatar0" unique_id=876442395 instance=ExtResource("1_g8pdh")]
+
+[node name="GeneralSkeleton" parent="RoboRig" parent_id_path=PackedInt32Array(674460690) index="0" unique_id=355851908]
+bones/1/position = Vector3(0, 0.124646366, -0.048111007)
+bones/9/rotation = Quaternion(-0.569822, 0.7274854, -0.3789602, 0.049569808)
+bones/9/scale = Vector3(1.0052859, 0.98921335, 1.0055997)
+bones/10/rotation = Quaternion(0.30341244, -0.542863, 0.07656747, 0.7793446)
+bones/10/scale = Vector3(1.0030798, 0.9856438, 1.0116335)
+bones/11/rotation = Quaternion(0.020235306, 0.8396629, 0.28569186, 0.461451)
+bones/11/scale = Vector3(0.99232703, 1.0116925, 0.9962719)
+bones/13/rotation = Quaternion(-0.7653539, 0.64356774, 0.006573432, -0.0033062105)
+bones/13/scale = Vector3(0.94946396, 1.1146052, 0.94592136)
+bones/14/rotation = Quaternion(-0.123897776, 0.70817953, 0.07088399, 0.69145256)
+bones/14/scale = Vector3(0.9775899, 1.045676, 0.9784741)
+bones/15/rotation = Quaternion(-0.119183704, 0.010168015, -0.05839198, 0.99110156)
+bones/15/scale = Vector3(1.0793004, 0.88779056, 1.0573013)
+bones/18/rotation = Quaternion(-3.6794834e-09, 0.74037254, 0.6721968, 4.7995062e-08)
+bones/18/scale = Vector3(1.0075287, 0.985242, 1.0073998)
+bones/19/rotation = Quaternion(-7.9007194e-08, 0.9628202, -0.27014297, -3.392553e-08)
+bones/19/scale = Vector3(1.0014334, 0.9877379, 1.011229)
+bones/20/rotation = Quaternion(-5.5549467e-09, 0.9747522, -0.2232894, -7.374812e-10)
+bones/20/scale = Vector3(0.9914373, 1.0101339, 0.9987851)
+bones/21/rotation = Quaternion(2.8102614e-08, 1, 0.0001270175, 4.9163177e-08)
+bones/21/scale = Vector3(0.9996667, 1.0003861, 0.9999489)
+bones/22/rotation = Quaternion(1.5338406e-08, 0.8696214, 0.49371928, -2.0007299e-07)
+bones/22/scale = Vector3(1.0178518, 0.9655452, 1.0175523)
+bones/23/rotation = Quaternion(3.173473e-07, 0.41500282, -0.90982014, 4.9563813e-08)
+bones/23/scale = Vector3(1.0041028, 0.97240686, 1.0256139)
+bones/24/rotation = Quaternion(9.5187727e-07, 0.64229697, -0.766456, -1.3714983e-08)
+bones/24/scale = Vector3(0.97879606, 0.99936074, 1.024252)
+bones/25/rotation = Quaternion(5.6106185e-08, 1, 0.00025501844, 3.4612166e-09)
+bones/25/scale = Vector3(0.9996431, 1.000413, 0.9999454)
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="RoboRig/GeneralSkeleton" index="1" unique_id=507455268]
+bone_name = "Spine"
+bone = 2
+duration = 0.5
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 3.1415927
+primary_damp_threshold = 1.0
+secondary_limit_angle = 1.5707964
+secondary_damp_threshold = 1.0
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=2014743095]
+tree_root = SubResource("AnimationNodeBlendTree_g8pdh")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Locomotion/blend_position = Vector2(0, 0)
+parameters/Special/blend_amount = 0.0
+parameters/Mantle/blend_amount = 0.0
+parameters/WallJump/blend_amount = 0.0
+parameters/Jump/blend_amount = 0.0
+parameters/Turn/blend_amount = 0.0

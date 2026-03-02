@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bwcq3qagk7rid"]
+
+[ext_resource type="PackedScene" uid="uid://cqvikwo3c4a00" path="res://scenes/terrain/level0.tscn" id="1_2ddto"]
+[ext_resource type="Script" uid="uid://pwy27jl2uwa5" path="res://addons/ikcc.gd" id="2_rgld7"]
+[ext_resource type="Script" uid="uid://bcrawnqsllade" path="res://scripts/core/chain_processor.gd" id="3_a8pr3"]
+[ext_resource type="Script" uid="uid://d4bvtm5j5x8sy" path="res://scripts/player/events/look.gd" id="4_j6lu3"]
+[ext_resource type="Script" uid="uid://ce4spbbjirth5" path="res://scripts/player/links/look_capture.gd" id="4_tpt06"]
+[ext_resource type="Script" uid="uid://b4yv8n3sa1jll" path="res://scripts/player/links/look_axis.gd" id="6_16ffl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgld7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_a8pr3"]
+sky_material = SubResource("ProceduralSkyMaterial_rgld7")
+
+[sub_resource type="Environment" id="Environment_j6lu3"]
+background_mode = 2
+sky = SubResource("Sky_a8pr3")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rgld7"]
+radius = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rgld7"]
+
+[node name="Sandbox" type="Node" unique_id=246400253]
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=754752012]
+environment = SubResource("Environment_j6lu3")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=26089903]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+layers = 524288
+light_cull_mask = 3
+shadow_enabled = true
+shadow_caster_mask = 3
+
+[node name="Terrain" type="Node" parent="." unique_id=311000395]
+
+[node name="Level0" parent="Terrain" unique_id=1419102565 instance=ExtResource("1_2ddto")]
+
+[node name="Entities" type="Node" parent="." unique_id=25692571]
+
+[node name="Player" type="CharacterBody3D" parent="Entities" unique_id=971670394 node_paths=PackedStringArray("collider")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 1
+platform_wall_layers = 1
+script = ExtResource("2_rgld7")
+collider = NodePath("Collider")
+
+[node name="CameraRig" type="SpringArm3D" parent="Entities/Player" unique_id=1117104846]
+transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 0, 1.75, 0)
+rotation_order = 0
+shape = SubResource("SphereShape3D_rgld7")
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="Entities/Player/CameraRig" unique_id=1393879208]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0, 0, 2)
+cull_mask = 524291
+
+[node name="Collider" type="CollisionShape3D" parent="Entities/Player" unique_id=831401053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_rgld7")
+
+[node name="Ready" type="Node" parent="Entities" unique_id=1676361388]
+script = ExtResource("3_a8pr3")
+metadata/_custom_type_script = "uid://bcrawnqsllade"
+
+[node name="Capture" type="Node" parent="Entities/Ready" unique_id=1413800248]
+script = ExtResource("4_tpt06")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Look" type="Node" parent="Entities" unique_id=2057183732 node_paths=PackedStringArray("character", "camera_rig", "camera")]
+script = ExtResource("4_j6lu3")
+character = NodePath("../Player")
+camera_rig = NodePath("../Player/CameraRig")
+camera = NodePath("../Player/CameraRig/Camera3D")
+current_mode = 1
+metadata/_custom_type_script = "uid://bcrawnqsllade"
+
+[node name="Axis" type="Node" parent="Entities/Look" unique_id=748951245]
+script = ExtResource("6_16ffl")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c5xdetcj6xtgc"]
+
+[ext_resource type="PackedScene" uid="uid://1r251neyu5t5" path="res://models/avatars/avatar1.glb" id="1_q47li"]
+[ext_resource type="Material" uid="uid://bnxukxvx17nqc" path="res://materials/avatar1.tres" id="2_gy4r7"]
+[ext_resource type="Material" uid="uid://ckjhgttkj1l30" path="res://materials/avatar1_acc.tres" id="3_oiuua"]
+
+[node name="Avatar1" unique_id=1790005512 instance=ExtResource("1_q47li")]
+
+[node name="Pea" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1484317753) index="0" unique_id=218483119]
+surface_material_override/0 = ExtResource("2_gy4r7")
+
+[node name="PeaAcc" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1484317753) index="1" unique_id=823405761]
+surface_material_override/0 = ExtResource("3_oiuua")

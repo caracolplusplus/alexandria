@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://bwcq3qagk7rid"]
+
+[ext_resource type="PackedScene" uid="uid://cqvikwo3c4a00" path="res://scenes/terrain/level0.tscn" id="1_2ddto"]
+[ext_resource type="Script" uid="uid://pwy27jl2uwa5" path="res://addons/ikcc.gd" id="2_rgld7"]
+[ext_resource type="Script" uid="uid://bcrawnqsllade" path="res://scripts/core/chain_event.gd" id="3_a8pr3"]
+[ext_resource type="PackedScene" uid="uid://c5xdetcj6xtgc" path="res://scenes/avatars/avatar1.tscn" id="3_dugpm"]
+[ext_resource type="Script" uid="uid://s8ci7y3rv6rp" path="res://scripts/player/standalone/view.gd" id="3_i1hvo"]
+[ext_resource type="PackedScene" uid="uid://cu82n8cosbnmq" path="res://scenes/avatars/avatar0.tscn" id="3_r0eph"]
+[ext_resource type="Script" uid="uid://bvlgg8cautwf3" path="res://scripts/player/standalone/height.gd" id="4_cg56h"]
+[ext_resource type="Script" uid="uid://d4bvtm5j5x8sy" path="res://scripts/player/events/look.gd" id="4_j6lu3"]
+[ext_resource type="Script" uid="uid://ce4spbbjirth5" path="res://scripts/player/links/look_capture.gd" id="4_tpt06"]
+[ext_resource type="Script" uid="uid://b4yv8n3sa1jll" path="res://scripts/player/links/look_axis.gd" id="6_16ffl"]
+[ext_resource type="Script" uid="uid://cueq6wri20ric" path="res://scripts/player/links/look_cursor.gd" id="6_17a3a"]
+[ext_resource type="Script" uid="uid://dhmh3noepu0ad" path="res://scripts/player/events/move.gd" id="8_4b02c"]
+[ext_resource type="Script" uid="uid://ciapluhi3qesy" path="res://scripts/player/links/move_crouch.gd" id="9_m5lhb"]
+[ext_resource type="Script" uid="uid://b6jmyc0cr0d1y" path="res://scripts/player/links/move_sprint.gd" id="9_qqy3k"]
+[ext_resource type="Script" uid="uid://bek4r8pha6i08" path="res://scripts/player/links/move_walk.gd" id="9_rvfw7"]
+[ext_resource type="Script" uid="uid://cishdmopmrl" path="res://scripts/player/links/move_slide.gd" id="11_r5tyk"]
+[ext_resource type="Script" uid="uid://b76oyakm0uglm" path="res://scripts/player/links/move_mantle.gd" id="11_ritfc"]
+[ext_resource type="Script" uid="uid://cw3jsohlxdyyp" path="res://scripts/player/links/move_dash.gd" id="11_vvfch"]
+[ext_resource type="Script" uid="uid://bnl5jobki3hs0" path="res://scripts/player/events/action.gd" id="15_2d2mb"]
+[ext_resource type="Script" uid="uid://cf2lcnropqyav" path="res://scripts/player/links/action_wall_jump.gd" id="16_8b5lh"]
+[ext_resource type="Script" uid="uid://ca8iytioebsha" path="res://scripts/player/links/action_jump.gd" id="16_g7mfh"]
+[ext_resource type="Script" uid="uid://cnequ7le8no5n" path="res://scripts/player/links/action_special.gd" id="18_hc7ve"]
+[ext_resource type="Script" uid="uid://djuboj64o8kmu" path="res://scripts/player/links/action_mantle.gd" id="20_yc6dp"]
+[ext_resource type="Script" uid="uid://bg6kcvbuuw8ei" path="res://scripts/player/events/animation.gd" id="23_f4qvn"]
+[ext_resource type="Script" uid="uid://dl4q0l4y67u0h" path="res://scripts/player/links/animation_special.gd" id="24_ubo0v"]
+[ext_resource type="Script" uid="uid://v1pe7mu564ru" path="res://scripts/player/links/animation_default.gd" id="25_4gx1y"]
+[ext_resource type="Script" uid="uid://dhs5yja3t2qe1" path="res://scripts/player/links/animation_wall_jump.gd" id="25_dugpm"]
+[ext_resource type="Script" uid="uid://rwlgndr84my3" path="res://scripts/player/links/animation_jump.gd" id="25_r0eph"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rgld7"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_a8pr3"]
+sky_material = SubResource("ProceduralSkyMaterial_rgld7")
+
+[sub_resource type="Environment" id="Environment_j6lu3"]
+background_mode = 2
+sky = SubResource("Sky_a8pr3")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rgld7"]
+radius = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rgld7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvfw7"]
+radius = 0.25
+
+[node name="Sandbox" type="Node" unique_id=246400253]
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=754752012]
+environment = SubResource("Environment_j6lu3")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=26089903]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+layers = 524288
+light_cull_mask = 3
+shadow_enabled = true
+shadow_caster_mask = 3
+
+[node name="Terrain" type="Node" parent="." unique_id=311000395]
+
+[node name="Level0" parent="Terrain" unique_id=1419102565 instance=ExtResource("1_2ddto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0077129602, -1.1920929e-07, 0.0008928776)
+
+[node name="Box1" type="CSGBox3D" parent="Terrain" unique_id=1947029205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 2, 0)
+use_collision = true
+collision_mask = 3
+
+[node name="Box2" type="CSGBox3D" parent="Terrain" unique_id=809131430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, -2)
+use_collision = true
+collision_mask = 3
+
+[node name="Box3" type="CSGBox3D" parent="Terrain" unique_id=813455486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 3, 2)
+use_collision = true
+collision_mask = 3
+
+[node name="Entities" type="Node" parent="." unique_id=25692571]
+
+[node name="Player" type="CharacterBody3D" parent="Entities" unique_id=971670394 node_paths=PackedStringArray("collider")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 1
+platform_wall_layers = 1
+script = ExtResource("2_rgld7")
+collider = NodePath("Collider")
+
+[node name="Avatar1" parent="Entities/Player" unique_id=1790005512 instance=ExtResource("3_dugpm")]
+
+[node name="Avatar0" parent="Entities/Player" unique_id=876442395 instance=ExtResource("3_r0eph")]
+visible = false
+
+[node name="LookAtModifier3D" parent="Entities/Player/Avatar0/RoboRig/GeneralSkeleton" parent_id_path=PackedInt32Array(876442395, 355851908) index="1" unique_id=507455268]
+target_node = NodePath("../../../../CameraRig/Camera/Target")
+
+[node name="CameraRig" type="SpringArm3D" parent="Entities/Player" unique_id=1117104846]
+transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 0, 1.75, 0)
+rotation_order = 0
+shape = SubResource("SphereShape3D_rgld7")
+spring_length = 2.0
+
+[node name="Camera" type="Camera3D" parent="Entities/Player/CameraRig" unique_id=1393879208]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0, 0, 2)
+cull_mask = 524291
+
+[node name="Target" type="Node3D" parent="Entities/Player/CameraRig/Camera" unique_id=1648349035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Collider" type="CollisionShape3D" parent="Entities/Player" unique_id=831401053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_rgld7")
+
+[node name="MoveCeiling" type="ShapeCast3D" parent="Entities/Player" unique_id=239593996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_rvfw7")
+target_position = Vector3(0, 1, 0)
+
+[node name="ActionCeiling" type="ShapeCast3D" parent="Entities/Player" unique_id=774685876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("SphereShape3D_rvfw7")
+target_position = Vector3(0, 0, 0.75)
+
+[node name="ActionMantle" type="ShapeCast3D" parent="Entities/Player" unique_id=1559453976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.5)
+shape = SubResource("SphereShape3D_rvfw7")
+target_position = Vector3(0, -1.5, 0)
+
+[node name="View" type="Node" parent="Entities/Player" unique_id=2128360418 node_paths=PackedStringArray("camera")]
+script = ExtResource("3_i1hvo")
+camera = NodePath("../CameraRig/Camera")
+metadata/_custom_type_script = "uid://c0toy4y7wqth4"
+
+[node name="Height" type="Node" parent="Entities/Player" unique_id=1184641561 node_paths=PackedStringArray("collider", "camera_rig")]
+script = ExtResource("4_cg56h")
+collider = NodePath("../Collider")
+camera_rig = NodePath("../CameraRig")
+metadata/_custom_type_script = "uid://c0toy4y7wqth4"
+
+[node name="Ready" type="Node" parent="Entities/Player" unique_id=1676361388]
+script = ExtResource("3_a8pr3")
+metadata/_custom_type_script = "uid://bcrawnqsllade"
+
+[node name="Capture" type="Node" parent="Entities/Player/Ready" unique_id=1413800248]
+script = ExtResource("4_tpt06")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Look" type="Node" parent="Entities/Player" unique_id=2057183732 node_paths=PackedStringArray("character", "camera_rig")]
+script = ExtResource("4_j6lu3")
+character = NodePath("..")
+camera_rig = NodePath("../CameraRig")
+current_mode = 2
+metadata/_custom_type_script = "uid://bcrawnqsllade"
+
+[node name="Cursor" type="Node" parent="Entities/Player/Look" unique_id=1991334730]
+script = ExtResource("6_17a3a")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Axis" type="Node" parent="Entities/Player/Look" unique_id=748951245]
+script = ExtResource("6_16ffl")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Move" type="Node" parent="Entities/Player" unique_id=295974232 node_paths=PackedStringArray("character", "ceiling")]
+script = ExtResource("8_4b02c")
+character = NodePath("..")
+ceiling = NodePath("../MoveCeiling")
+current_mode = 2
+metadata/_custom_type_script = "uid://dhmh3noepu0ad"
+
+[node name="Mantle" type="Node" parent="Entities/Player/Move" unique_id=448378366]
+script = ExtResource("11_ritfc")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Dash" type="Node" parent="Entities/Player/Move" unique_id=1898551835]
+script = ExtResource("11_vvfch")
+height = 1.5
+fov = 85.0
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Slide" type="Node" parent="Entities/Player/Move" unique_id=1418051921]
+script = ExtResource("11_r5tyk")
+speed = 7.5
+control = 0.25
+height = 1.0
+fov = 85.0
+metadata/_custom_type_script = "uid://buo42jcseyg48"
+
+[node name="Sprint" type="Node" parent="Entities/Player/Move" unique_id=143554183]
+script = ExtResource("9_qqy3k")
+speed = 8.0
+control = 0.75
+fov = 80.0
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Crouch" type="Node" parent="Entities/Player/Move" unique_id=921188846]
+script = ExtResource("9_m5lhb")
+speed = 3.5
+control = 0.85
+height = 1.5
+fov = 70.0
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Walk" type="Node" parent="Entities/Player/Move" unique_id=78601962]
+script = ExtResource("9_rvfw7")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Action" type="Node" parent="Entities/Player" unique_id=1197301154 node_paths=PackedStringArray("character", "ceiling", "mantle")]
+script = ExtResource("15_2d2mb")
+character = NodePath("..")
+ceiling = NodePath("../ActionCeiling")
+mantle = NodePath("../ActionMantle")
+current_mode = 2
+metadata/_custom_type_script = "uid://bnl5jobki3hs0"
+
+[node name="Mantle" type="Node" parent="Entities/Player/Action" unique_id=372350424]
+script = ExtResource("20_yc6dp")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Jump" type="Node" parent="Entities/Player/Action" unique_id=1188973109]
+script = ExtResource("16_g7mfh")
+cooldown_duration = 0.05
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="WallJump" type="Node" parent="Entities/Player/Action" unique_id=659865613]
+script = ExtResource("16_8b5lh")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Special" type="Node" parent="Entities/Player/Action" unique_id=2026719732]
+script = ExtResource("18_hc7ve")
+metadata/_custom_type_script = "uid://dbricrjbowgq6"
+
+[node name="Animation" type="Node" parent="Entities/Player" unique_id=1651704123 node_paths=PackedStringArray("character", "collider", "avatar", "tree")]
+script = ExtResource("23_f4qvn")
+character = NodePath("..")
+collider = NodePath("../Collider")
+avatar = NodePath("../Avatar0")
+tree = NodePath("../Avatar0/AnimationTree")
+current_mode = 1
+metadata/_custom_type_script = "uid://bcrawnqsllade"
+
+[node name="Special" type="Node" parent="Entities/Player/Animation" unique_id=18339397]
+script = ExtResource("24_ubo0v")
+metadata/_custom_type_script = "uid://wy0ml7b2omw4"
+
+[node name="WallJump" type="Node" parent="Entities/Player/Animation" unique_id=1831629575]
+script = ExtResource("25_dugpm")
+metadata/_custom_type_script = "uid://wy0ml7b2omw4"
+
+[node name="Jump" type="Node" parent="Entities/Player/Animation" unique_id=1681963309]
+script = ExtResource("25_r0eph")
+metadata/_custom_type_script = "uid://wy0ml7b2omw4"
+
+[node name="Default" type="Node" parent="Entities/Player/Animation" unique_id=1458603901]
+script = ExtResource("25_4gx1y")
+active = true
+metadata/_custom_type_script = "uid://wy0ml7b2omw4"
+
+[connection signal="activated" from="Entities/Player/Move/Mantle" to="Entities/Player/View" method="adjust_fov"]
+[connection signal="activated" from="Entities/Player/Move/Mantle" to="Entities/Player/Height" method="adjust_height"]
+[connection signal="activated" from="Entities/Player/Move/Dash" to="Entities/Player/View" method="adjust_fov"]
+[connection signal="activated" from="Entities/Player/Move/Dash" to="Entities/Player/Height" method="adjust_height"]
+[connection signal="activated" from="Entities/Player/Move/Slide" to="Entities/Player/View" method="adjust_fov"]
+[connection signal="activated" from="Entities/Player/Move/Slide" to="Entities/Player/Height" method="adjust_height"]
+[connection signal="activated" from="Entities/Player/Move/Sprint" to="Entities/Player/View" method="adjust_fov"]
+[connection signal="activated" from="Entities/Player/Move/Sprint" to="Entities/Player/Height" method="adjust_height"]
+[connection signal="activated" from="Entities/Player/Move/Crouch" to="Entities/Player/View" method="adjust_fov"]
+[connection signal="activated" from="Entities/Player/Move/Crouch" to="Entities/Player/Height" method="adjust_height"]
+[connection signal="activated" from="Entities/Player/Move/Walk" to="Entities/Player/View" method="adjust_fov"]
+[connection signal="activated" from="Entities/Player/Move/Walk" to="Entities/Player/Height" method="adjust_height"]
+[connection signal="activated" from="Entities/Player/Action/Mantle" to="Entities/Player/Move/Mantle" method="activate"]
+[connection signal="activated" from="Entities/Player/Action/WallJump" to="Entities/Player/Animation/WallJump" method="activate"]
+[connection signal="deactivated" from="Entities/Player/Action/WallJump" to="Entities/Player/Animation/WallJump" method="deactivate"]
+[connection signal="activated" from="Entities/Player/Action/Special" to="Entities/Player/Move/Dash" method="activate"]
+[connection signal="activated" from="Entities/Player/Action/Special" to="Entities/Player/Animation/Special" method="activate"]
+[connection signal="deactivated" from="Entities/Player/Action/Special" to="Entities/Player/Animation/Special" method="deactivate"]
+
+[editable path="Entities/Player/Avatar0"]
