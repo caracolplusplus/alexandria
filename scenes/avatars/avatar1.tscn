@@ -4,10 +4,164 @@
 [ext_resource type="Material" uid="uid://bnxukxvx17nqc" path="res://materials/avatar1.tres" id="2_gy4r7"]
 [ext_resource type="Material" uid="uid://ckjhgttkj1l30" path="res://materials/avatar1_acc.tres" id="3_oiuua"]
 
-[node name="Avatar1" unique_id=1790005512 instance=ExtResource("1_q47li")]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kvd1q"]
+animation = &"Air"
 
-[node name="Pea" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1484317753) index="0" unique_id=218483119]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n4k2n"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hcdbh"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uxnre"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_gxyj8"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oiuua"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tgvsv"]
+animation = &"Crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pb5of"]
+animation = &"Crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6t3an"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jbl3n"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1qb0a"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybtml"]
+animation = &"Sneak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_luvj4"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gh0tn"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b5ava"]
+animation = &"Sneak"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ov3uy"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xor52"]
+animation = &"Sprint"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_g8pdh"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_oiuua")
+blend_point_0/pos = Vector2(0, 2)
+blend_point_1/node = SubResource("AnimationNodeAnimation_tgvsv")
+blend_point_1/pos = Vector2(0, 1.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_jbl3n")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_1qb0a")
+blend_point_3/pos = Vector2(3, 1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_ybtml")
+blend_point_4/pos = Vector2(3, 1.5)
+blend_point_5/node = SubResource("AnimationNodeAnimation_luvj4")
+blend_point_5/pos = Vector2(3, 2)
+blend_point_6/node = SubResource("AnimationNodeAnimation_gh0tn")
+blend_point_6/pos = Vector2(5, 2)
+blend_point_7/node = SubResource("AnimationNodeAnimation_b5ava")
+blend_point_7/pos = Vector2(5, 1.5)
+blend_point_8/node = SubResource("AnimationNodeAnimation_ov3uy")
+blend_point_8/pos = Vector2(5, 1)
+blend_point_9/node = SubResource("AnimationNodeAnimation_xor52")
+blend_point_9/pos = Vector2(8, 2)
+blend_point_10/node = SubResource("AnimationNodeAnimation_pb5of")
+blend_point_10/pos = Vector2(8, 1.5)
+blend_point_11/node = SubResource("AnimationNodeAnimation_6t3an")
+blend_point_11/pos = Vector2(8, 1)
+min_space = Vector2(0, 0)
+max_space = Vector2(8, 2)
+snap = Vector2(1, 0.5)
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3uart"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_uxnre"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gxyj8"]
+animation = &"Turn"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_yub2l"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4fq2k"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_imi4b"]
+nodes/output/position = Vector2(640, 133.33333)
+nodes/Locomotion/node = SubResource("AnimationNodeBlendSpace2D_g8pdh")
+nodes/Locomotion/position = Vector2(-880, 53.333332)
+nodes/Special/node = SubResource("AnimationNodeBlend2_uxnre")
+nodes/Special/position = Vector2(53.333332, 133.33333)
+nodes/Mantle/node = SubResource("AnimationNodeBlend2_3uart")
+nodes/Mantle/position = Vector2(213.33333, 133.33333)
+nodes/WallJump/node = SubResource("AnimationNodeBlend2_4fq2k")
+nodes/WallJump/position = Vector2(-106.666664, 133.33333)
+nodes/Jump/node = SubResource("AnimationNodeBlend2_gxyj8")
+nodes/Jump/position = Vector2(-266.66666, 133.33333)
+nodes/A0/node = SubResource("AnimationNodeAnimation_kvd1q")
+nodes/A0/position = Vector2(-480, 453.33334)
+nodes/A1/node = SubResource("AnimationNodeAnimation_n4k2n")
+nodes/A1/position = Vector2(-320, 453.33334)
+nodes/A2/node = SubResource("AnimationNodeAnimation_hcdbh")
+nodes/A2/position = Vector2(-160, 453.33334)
+nodes/A3/node = SubResource("AnimationNodeAnimation_uxnre")
+nodes/A3/position = Vector2(0, 453.33334)
+nodes/Turn/node = SubResource("AnimationNodeBlend2_yub2l")
+nodes/Turn/position = Vector2(-426.66666, 133.33333)
+nodes/T/node = SubResource("AnimationNodeAnimation_gxyj8")
+nodes/T/position = Vector2(-640, 453.33334)
+node_connections = [&"output", 0, &"Mantle", &"Special", 0, &"WallJump", &"Special", 1, &"A2", &"Mantle", 0, &"Special", &"Mantle", 1, &"A3", &"WallJump", 0, &"Jump", &"WallJump", 1, &"A1", &"Jump", 0, &"Turn", &"Jump", 1, &"A0", &"Turn", 0, &"Locomotion", &"Turn", 1, &"T"]
+
+[node name="Avatar1" unique_id=215156767 instance=ExtResource("1_q47li")]
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(571831857) index="0" unique_id=1737840566]
+bones/0/position = Vector3(0, 0.0373419, 0)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/2/rotation = Quaternion(-0.831494, -0.36396042, 0.38612726, -0.16448842)
+bones/3/rotation = Quaternion(-0.002390192, -0.010386557, 0.007881173, 0.9999122)
+bones/4/rotation = Quaternion(0.0015089506, 0.009618334, -0.004853767, 0.9999408)
+bones/5/rotation = Quaternion(-0.06457342, -6.7133668e-09, -1.4282202e-08, 0.99791294)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/8/rotation = Quaternion(0.8314938, -0.3639605, 0.38612735, 0.16448829)
+bones/9/rotation = Quaternion(-0.0023902033, 0.010386547, -0.007881231, 0.99991214)
+bones/10/rotation = Quaternion(0.0015089806, -0.0096183615, 0.0048537753, 0.9999409)
+bones/13/rotation = Quaternion(-0.67670864, -0.53693044, -0.3131143, 0.39462724)
+bones/14/rotation = Quaternion(3.1412148e-07, -4.2189736e-09, 0.793214, 0.608943)
+bones/17/rotation = Quaternion(-0.8560983, 0.1154329, 0.06731532, 0.49923924)
+bones/18/rotation = Quaternion(6.7670475e-10, -4.6805684e-09, -0.0021142848, 0.99999785)
+
+[node name="Pea" parent="Armature/Skeleton3D" index="0" unique_id=483972139]
 surface_material_override/0 = ExtResource("2_gy4r7")
 
-[node name="PeaAcc" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1484317753) index="1" unique_id=823405761]
+[node name="PeaAcc" parent="Armature/Skeleton3D" index="1" unique_id=1229086267]
 surface_material_override/0 = ExtResource("3_oiuua")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" index="2" unique_id=428473088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4619142, 0)
+bone_name = "spine"
+bone = 1
+duration = 0.5
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 3.1415927
+primary_damp_threshold = 1.0
+secondary_limit_angle = 1.5707964
+secondary_damp_threshold = 1.0
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1330015722]
+tree_root = SubResource("AnimationNodeBlendTree_imi4b")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Locomotion/blend_position = Vector2(0, 0)
+parameters/Special/blend_amount = 0.0
+parameters/Mantle/blend_amount = 0.0
+parameters/WallJump/blend_amount = 0.0
+parameters/Jump/blend_amount = 0.0
+parameters/Turn/blend_amount = 0.0

@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bcrawnqsllade" path="res://scripts/core/chain_event.gd" id="3_a8pr3"]
 [ext_resource type="PackedScene" uid="uid://c5xdetcj6xtgc" path="res://scenes/avatars/avatar1.tscn" id="3_dugpm"]
 [ext_resource type="Script" uid="uid://s8ci7y3rv6rp" path="res://scripts/player/standalone/view.gd" id="3_i1hvo"]
-[ext_resource type="PackedScene" uid="uid://cu82n8cosbnmq" path="res://scenes/avatars/avatar0.tscn" id="3_r0eph"]
 [ext_resource type="Script" uid="uid://bvlgg8cautwf3" path="res://scripts/player/standalone/height.gd" id="4_cg56h"]
 [ext_resource type="Script" uid="uid://d4bvtm5j5x8sy" path="res://scripts/player/events/look.gd" id="4_j6lu3"]
 [ext_resource type="Script" uid="uid://ce4spbbjirth5" path="res://scripts/player/links/look_capture.gd" id="4_tpt06"]
@@ -95,10 +94,25 @@ collider = NodePath("Collider")
 
 [node name="Avatar1" parent="Entities/Player" unique_id=1790005512 instance=ExtResource("3_dugpm")]
 
-[node name="Avatar0" parent="Entities/Player" unique_id=876442395 instance=ExtResource("3_r0eph")]
-visible = false
+[node name="Skeleton3D" parent="Entities/Player/Avatar1/Armature" parent_id_path=PackedInt32Array(1790005512, 571831857) index="0" unique_id=1737840566]
+bones/0/position = Vector3(0, -0.38738033, 0)
+bones/0/rotation = Quaternion(-0.28165883, 0.0009487151, -0.0012699165, 0.9595133)
+bones/1/rotation = Quaternion(0.30967882, -6.1217115e-11, 0.001702451, 0.9508397)
+bones/2/rotation = Quaternion(-0.23659468, -0.39119586, 0.8473254, -0.27023783)
+bones/3/rotation = Quaternion(-0.0024058758, -0.010372322, 0.0079741655, 0.9999116)
+bones/4/rotation = Quaternion(0.0015150007, 0.009650649, -0.0048901504, 0.9999404)
+bones/5/rotation = Quaternion(-0.06457343, 1.2027718e-10, -2.40571e-08, 0.99791294)
+bones/6/rotation = Quaternion(0.006859631, -4.2320925e-11, 3.771077e-05, 0.99997646)
+bones/7/rotation = Quaternion(-0.002374216, 2.9093256e-11, -1.3052008e-05, 0.9999972)
+bones/8/rotation = Quaternion(-0.18276536, 0.6611672, 0.645233, -0.3363469)
+bones/9/rotation = Quaternion(-0.07012982, 0.06762251, -0.5784807, 0.8098574)
+bones/10/rotation = Quaternion(0.30335152, 0.02846808, -0.2021742, 0.9307487)
+bones/13/rotation = Quaternion(-0.73778373, -0.4482467, -0.26359698, 0.43042627)
+bones/14/rotation = Quaternion(1.07254266e-07, 1.3003799e-08, 0.2861087, 0.95819724)
+bones/17/rotation = Quaternion(-0.67087835, 0.5450758, 0.31565434, 0.39137843)
+bones/18/rotation = Quaternion(2.0268946e-07, -3.7312686e-09, -0.6339901, 0.77334124)
 
-[node name="LookAtModifier3D" parent="Entities/Player/Avatar0/RoboRig/GeneralSkeleton" parent_id_path=PackedInt32Array(876442395, 355851908) index="1" unique_id=507455268]
+[node name="LookAtModifier3D" parent="Entities/Player/Avatar1/Armature/Skeleton3D" index="2" unique_id=428473088]
 target_node = NodePath("../../../../CameraRig/Camera/Target")
 
 [node name="CameraRig" type="SpringArm3D" parent="Entities/Player" unique_id=1117104846]
@@ -240,8 +254,8 @@ metadata/_custom_type_script = "uid://dbricrjbowgq6"
 script = ExtResource("23_f4qvn")
 character = NodePath("..")
 collider = NodePath("../Collider")
-avatar = NodePath("../Avatar0")
-tree = NodePath("../Avatar0/AnimationTree")
+avatar = NodePath("../Avatar1")
+tree = NodePath("../Avatar1/AnimationTree")
 current_mode = 1
 metadata/_custom_type_script = "uid://bcrawnqsllade"
 
@@ -281,4 +295,4 @@ metadata/_custom_type_script = "uid://wy0ml7b2omw4"
 [connection signal="activated" from="Entities/Player/Action/Special" to="Entities/Player/Animation/Special" method="activate"]
 [connection signal="deactivated" from="Entities/Player/Action/Special" to="Entities/Player/Animation/Special" method="deactivate"]
 
-[editable path="Entities/Player/Avatar0"]
+[editable path="Entities/Player/Avatar1"]
